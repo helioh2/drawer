@@ -1,0 +1,116 @@
+Criação, remoção, movimentação, redimensionamento de figuras básicas.
+
+Assinaturas dos comandos: 
+novo-projeto
+get-estado-projeto
+nova-figura retangulo <x> <y> <largura> <altura>
+nova-figura elipse <x> <y> <largura> <altura>
+nova-figura linha-reta <x_inic> <y_inic> <x_final> <y_final>
+move-figura <id_figura> <dx> <dy>
+redimensiona-figura <id_figura> <d_larg> <d_alt>  ##d_larg é a variação de largura, e d_alt é a variação na altura
+muda-cor-figura <id_figura> <r> <g> <b>   (r, g, e b são os tons de vermelho, verde e azul, de 0 a 255 cada)
+set-preenchido <id_figura>
+set-contorno <id_figura>
+
+Testes:
+
+> novo-projeto
+ok
+
+> get-estado-projeto
+vazio
+
+> nova-figura retangulo 20 20 100 100
+ok
+
+> get-estado-projeto
+retangulo(id=1, x=20, y=20, largura=100, altura=100, cor=(0,0,0), preenchido=false)
+
+> nova-figura elipse 40 40 50 50
+ok
+
+> get-estado-projeto
+elipse(id=2, x=40, y=40, largura=50, altura=50, cor=(0,0,0), preenchido=false)
+retangulo(id=1, x=20, y=20, largura=100, altura=100, cor=(0,0,0), preenchido=false)
+
+> nova-figura linha-reta 30 30 60 60
+ok
+
+> get-estado-projeto
+linha-reta(id=3, x_inic=30, y_inic=30, x_final=60, y_final=60, cor=(0,0,0), preenchido=false)
+elipse(id=2, x=40, y=40, largura=50, altura=50, cor=(0,0,0), preenchido=false)
+retangulo(id=1, x=20, y=20, largura=100, altura=100, cor=(0,0,0), preenchido=false)
+
+> delete-figura 2
+ok
+
+> get-estado-projeto
+linha-reta(id=3, x_inic=30, y_inic=30, x_final=60, y_final=60, cor=(0,0,0), preenchido=false)
+retangulo(id=1, x=20, y=20, largura=100, altura=100, cor=(0,0,0), preenchido=false)
+
+> delete-figura 4
+figura-nao-existe
+
+> get-estado-projeto
+linha-reta(id=3, x_inic=30, y_inic=30, x_final=60, y_final=60, cor=(0,0,0), preenchido=false)
+retangulo(id=1, x=20, y=20, largura=100, altura=100, cor=(0,0,0), preenchido=false)
+
+> move-figura 1 50 100
+ok
+
+> get-estado-projeto
+linha-reta(id=3, x_inic=30, y_inic=30, x_final=60, y_final=60, cor=(0,0,0), preenchido=false)
+retangulo(id=1, x=70, y=120, largura=100, altura=100, cor=(0,0,0), preenchido=false)
+
+> move-figura 3 50 100
+ok
+
+> get-estado-projeto
+linha-reta(id=3, x_inic=80, y_inic=130, x_final=110, y_final=160, cor=(0,0,0), preenchido=false)
+retangulo(id=1, x=70, y=120, largura=100, altura=100, cor=(0,0,0), preenchido=false)
+
+> redimensiona-figura 3 50 100
+ok
+
+> get-estado-projeto
+linha-reta(id=3, x_inic=80, y_inic=130, x_final=110, y_final=160, cor=(0,0,0), preenchido=false)
+retangulo(id=1, x=70, y=120, largura=150, altura=200, cor=(0,0,0), preenchido=false)
+
+> redimensiona-figura 1 50 100
+ok
+
+> get-estado-projeto
+linha-reta(id=3, x_inic=80, y_inic=130, x_final=160, y_final=260, cor=(0,0,0), preenchido=false)
+retangulo(id=1, x=70, y=120, largura=150, altura=200, cor=(0,0,0), preenchido=false)
+
+> nova-figura linha-reta 100 100 20 20
+ok
+
+> get-estado-projeto
+linha-reta(id=4, x_inic=20, y_inic=20, x_final=100, y_final=100, cor=(0,0,0), preenchido=false)
+linha-reta(id=3, x_inic=80, y_inic=130, x_final=160, y_final=260, cor=(0,0,0), preenchido=false)
+retangulo(id=1, x=70, y=120, largura=150, altura=200, cor=(0,0,0), preenchido=false)
+
+> muda-cor-figura 1 100 100 100
+ok
+
+> get-estado-projeto
+linha-reta(id=4, x_inic=20, y_inic=20, x_final=100, y_final=100, cor=(0,0,0), preenchido=false)
+linha-reta(id=3, x_inic=80, y_inic=130, x_final=160, y_final=260, cor=(0,0,0), preenchido=false)
+retangulo(id=1, x=70, y=120, largura=150, altura=200, cor=(100,100,100), preenchido=false)
+
+> set-preenchido 1
+ok
+
+> get-estado-projeto
+linha-reta(id=4, x_inic=20, y_inic=20, x_final=100, y_final=100, cor=(0,0,0), preenchido=false)
+linha-reta(id=3, x_inic=80, y_inic=130, x_final=160, y_final=260, cor=(0,0,0), preenchido=false)
+retangulo(id=1, x=70, y=120, largura=150, altura=200, cor=(100,100,100), preenchido=true)
+
+> set-contorno 1
+ok
+
+> get-estado-projeto
+linha-reta(id=4, x_inic=20, y_inic=20, x_final=100, y_final=100, cor=(0,0,0), preenchido=false)
+linha-reta(id=3, x_inic=80, y_inic=130, x_final=160, y_final=260, cor=(0,0,0), preenchido=false)
+retangulo(id=1, x=70, y=120, largura=150, altura=200, cor=(100,100,100), preenchido=false)

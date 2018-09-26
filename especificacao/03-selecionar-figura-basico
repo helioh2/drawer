@@ -1,0 +1,57 @@
+Seleção de figuras básico
+
+Assinaturas dos comandos: 
+novo-projeto
+get-estado-projeto
+nova-figura retangulo <x> <y> <largura> <altura>
+nova-figura elipse <x> <y> <largura> <altura>
+nova-figura linha-reta <x_inic> <y_inic> <x_final> <y_final>
+#nota: a princípio funciona pela seleção da área em que está contida a linha, para simplificar
+seleciona-figura <x> <y> -> <id_figura>   (onde x e y é  posição do ponteiro do mouse)
+#nota: seleciona figura retorna o id da figura, de modo a facilitar um possível encadeamento de comandos
+get-figura <id_figura> -> <figura>
+
+
+Testes:
+
+> novo-projeto
+ok
+
+> get-estado-projeto
+vazio
+
+> nova-figura retangulo 20 20 100 100
+ok
+
+> get-estado-projeto
+retangulo(id=1, x=20, y=20, largura=100, altura=100, cor=(0,0,0), preenchido=false)
+
+> nova-figura elipse 40 40 50 50
+ok
+
+> get-estado-projeto
+elipse(id=2, x=40, y=40, largura=50, altura=50, cor=(0,0,0), preenchido=false)
+retangulo(id=1, x=20, y=20, largura=100, altura=100, cor=(0,0,0), preenchido=false)
+
+> nova-figura linha-reta 100 120 120 100
+ok
+
+> get-estado-projeto
+linha-reta(id=3, x_inic=100, y_inic=120, x_final=120, y_final=100, cor=(0,0,0), preenchido=false)
+elipse(id=2, x=40, y=40, largura=50, altura=50, cor=(0,0,0), preenchido=false)
+retangulo(id=1, x=20, y=20, largura=100, altura=100, cor=(0,0,0), preenchido=false)
+
+> seleciona-figura 30 30
+1
+
+> seleciona-figura 50 50
+2
+
+> seleciona-figura 110 110
+3
+
+> seleciona-figura 150 150
+nada
+
+> get-figura 2
+elipse(id=2, x=40, y=40, largura=50, altura=50, cor=(0,0,0), preenchido=false)

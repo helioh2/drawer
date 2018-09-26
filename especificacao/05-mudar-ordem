@@ -1,0 +1,74 @@
+Seleção de figuras básico
+
+Assinaturas dos comandos: 
+novo-projeto
+get-estado-projeto
+nova-figura retangulo <x> <y> <largura> <altura>
+nova-figura elipse <x> <y> <largura> <altura>
+nova-figura linha-reta <x_inic> <y_inic> <x_final> <y_final>
+enviar-para-tras <id_figura>
+trazer-para-frente <id_figura>
+colocar-na-frente-de-todas <id_figura>
+colocar-atras-de-todas <id_figura>
+
+
+Testes:
+
+> novo-projeto
+ok
+
+> get-estado-projeto
+vazio
+
+> nova-figura retangulo 20 20 100 100
+ok
+
+> get-estado-projeto
+retangulo(id=1, x=20, y=20, largura=100, altura=100, cor=(0,0,0), preenchido=false)
+
+> nova-figura elipse 40 40 50 50
+ok
+
+> get-estado-projeto
+elipse(id=2, x=40, y=40, largura=50, altura=50, cor=(0,0,0), preenchido=false)
+retangulo(id=1, x=20, y=20, largura=100, altura=100, cor=(0,0,0), preenchido=false)
+
+> nova-figura linha-reta 100 120 120 100
+ok
+
+> get-estado-projeto
+linha-reta(id=3, x_inic=100, y_inic=120, x_final=120, y_final=100, cor=(0,0,0), preenchido=false)
+elipse(id=2, x=40, y=40, largura=50, altura=50, cor=(0,0,0), preenchido=false)
+retangulo(id=1, x=20, y=20, largura=100, altura=100, cor=(0,0,0), preenchido=false)
+
+> enviar-para-tras 3
+ok
+
+> get-estado-projeto
+elipse(id=2, x=40, y=40, largura=50, altura=50, cor=(0,0,0), preenchido=false)
+linha-reta(id=3, x_inic=100, y_inic=120, x_final=120, y_final=100, cor=(0,0,0), preenchido=false)
+retangulo(id=1, x=20, y=20, largura=100, altura=100, cor=(0,0,0), preenchido=false)
+
+> trazer-para-frente 1
+ok
+
+> get-estado-projeto
+elipse(id=2, x=40, y=40, largura=50, altura=50, cor=(0,0,0), preenchido=false)
+retangulo(id=1, x=20, y=20, largura=100, altura=100, cor=(0,0,0), preenchido=false)
+linha-reta(id=3, x_inic=100, y_inic=120, x_final=120, y_final=100, cor=(0,0,0), preenchido=false)
+
+> colocar-atras-de-todas 2
+ok
+
+> get-estado-projeto
+retangulo(id=1, x=20, y=20, largura=100, altura=100, cor=(0,0,0), preenchido=false)
+linha-reta(id=3, x_inic=100, y_inic=120, x_final=120, y_final=100, cor=(0,0,0), preenchido=false)
+elipse(id=2, x=40, y=40, largura=50, altura=50, cor=(0,0,0), preenchido=false)
+
+> colocar-na-frente-de-todas 2
+ok
+
+> get-estado-projeto
+elipse(id=2, x=40, y=40, largura=50, altura=50, cor=(0,0,0), preenchido=false)
+retangulo(id=1, x=20, y=20, largura=100, altura=100, cor=(0,0,0), preenchido=false)
+linha-reta(id=3, x_inic=100, y_inic=120, x_final=120, y_final=100, cor=(0,0,0), preenchido=false)
