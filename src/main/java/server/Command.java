@@ -11,7 +11,8 @@ package server;
 public enum Command {
     
     NOVO_PROJETO("novo-projeto"),
-    NOVA_FIGURA("nova-figura");
+    NOVA_FIGURA("nova-figura"),
+    MOVER_FIGURA("move-figura");
     
     
     private String label;

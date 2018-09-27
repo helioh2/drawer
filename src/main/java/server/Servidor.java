@@ -99,6 +99,7 @@ public class Servidor {
             case NOVO_PROJETO:
                 //TODO
                 outList.add("ok");
+                System.out.println("cheguei aqui");
                 break;
             case NOVA_FIGURA:
                 //TODO

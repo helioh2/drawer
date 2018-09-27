@@ -69,7 +69,7 @@ ok
 linha-reta(id=3, x_inic=80, y_inic=130, x_final=110, y_final=160, cor=(0,0,0), preenchido=false)
 retangulo(id=1, x=70, y=120, largura=100, altura=100, cor=(0,0,0), preenchido=false)
 
-> redimensiona-figura 3 50 100
+> redimensiona-figura 1 50 100
 ok
 
 > get-estado-projeto
