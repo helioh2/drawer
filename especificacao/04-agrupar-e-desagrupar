@@ -60,12 +60,30 @@ figura-composta(
     id=5,
     figuras=[
         linha-reta(id=3, x_inic=100, y_inic=120, x_final=120, y_final=100, cor=(0,0,0), preenchido=false)
+        figura-composta(
+            id=4,
+            figuras=[
+                elipse(id=2, x=40, y=40, largura=50, altura=50, cor=(0,0,0), preenchido=false)
+                retangulo(id=1, x=20, y=20, largura=100, altura=100, cor=(0,0,0), preenchido=false)
+            ]
+        )
+    ]
+)
+
+> desagrupar-figura 5
+ok
+
+> get-estado-projeto
+linha-reta(id=3, x_inic=100, y_inic=120, x_final=120, y_final=100, cor=(0,0,0), preenchido=false)
+figura-composta(
+    id=4,
+    figuras=[
         elipse(id=2, x=40, y=40, largura=50, altura=50, cor=(0,0,0), preenchido=false)
         retangulo(id=1, x=20, y=20, largura=100, altura=100, cor=(0,0,0), preenchido=false)
     ]
 )
 
-> desagrupar-figura 5
+> desagrupar-figura 4
 ok
 
 > get-estado-projeto
@@ -78,6 +96,3 @@ nao-permitido
 
 > desagrupar-figura 1
 nao-permitido
-
-
- 

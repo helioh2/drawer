@@ -25,4 +25,13 @@ public enum Command {
         return label;
     }
     
+    static Command fromLabel(String x) throws Exception {
+    for (Command currentType : Command.values()) {
+      if (x.equals(currentType.toString())) {
+        return currentType;
+      }
+    }
+    throw new Exception("Unmatched Type: " + x);
+  }
+    
 }

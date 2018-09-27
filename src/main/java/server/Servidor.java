@@ -56,7 +56,6 @@ public class Servidor {
                     for (String line: outList){
                         writeLine(cliente.getOutputStream(), line);
                     }
-                    
                     cliente.close();
                 } catch (IOException ex) {
                     Logger.getLogger(Servidor.class.getName()).log(Level.SEVERE, null, ex);
@@ -85,15 +84,37 @@ public class Servidor {
             outList.add(OutputMessage.INVALID_COMMAND.toString());
             return outList;
         }
-        String commandType = command.split(" ")[0];
+        String commandTypeStr = command.split(" ")[0];
+        Command commandType;
         
-        if (commandType.equals(Command.NOVO_PROJETO.toString())){
-           // TODO
-            
-        } else if (commandType.equals(Command.NOVA_FIGURA.toString())){
-            // TODO
+        try {
+            commandType = Command.fromLabel(commandTypeStr);
+        } catch (Exception ex) {
+            outList.add(OutputMessage.INVALID_COMMAND.toString());
+            return outList;
         }
-        //TODO...
+        
+        //INSIRAM CÓDIGO A PARTIR DAQUI:
+        switch (commandType) {
+            case NOVO_PROJETO:
+                //TODO
+                outList.add("ok");
+                break;
+            case NOVA_FIGURA:
+                //TODO
+                break;
+            //COLOCAR TODOS OS COMANDOS
+            default:
+                break;
+        }
+        
+//        if (commandType.equals(Command.NOVO_PROJETO.toString())){
+//           // TODO
+//            
+//        } else if (commandType.equals(Command.NOVA_FIGURA.toString())){
+//            // TODO
+//        }
+//        //TODO...
         
         return outList;
 
