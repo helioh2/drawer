@@ -8,6 +8,7 @@ import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -98,8 +99,15 @@ public class Servidor {
         switch (commandType) {
             case NOVO_PROJETO:
                 //TODO
+                controlador.novoProjeto();
                 outList.add("ok");
-                System.out.println("cheguei aqui");
+//                System.out.println("cheguei aqui");
+                break;
+            case GET_ESTADO_PROJETO:
+                List<String> resultado = controlador.desenhaTudo();
+                for (String figuraStr: resultado) {
+                    outList.add(figuraStr);
+                }
                 break;
             case NOVA_FIGURA:
                 //TODO

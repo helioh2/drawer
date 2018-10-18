@@ -3,12 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package core;
+package model;
 
 /**
  *
  * @author helio
  */
-public class Point extends java.awt.Point{
+public interface AreaCalculavel extends Comparable<AreaCalculavel> {
+    
+    Double calculaArea();  
     
 }

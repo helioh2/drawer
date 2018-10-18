@@ -3,13 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package core;
+package server;
+
+import java.util.LinkedList;
+import java.util.List;
+import model.Figura;
 
 /**
  *
  * @author helio
  */
-public interface Figura {
+class Projeto {
+    
+    
+    
     
     
 }
