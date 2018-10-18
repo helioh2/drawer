@@ -19,7 +19,7 @@ public class Elipse implements Figura, AreaCalculavel {
     @Override
     public String desenhar() {
         // CHAMA DESENHADOR DE TELA...
-//        AWT...
+//        AWT... ???
         return "Elipse(id="+id+"...";
     }
 
