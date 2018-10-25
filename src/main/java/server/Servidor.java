@@ -1,5 +1,6 @@
 package server;
 
+import controle.AppController;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -11,11 +12,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import model.Desenhador;
+import model.Figura;
+import model.Retangulo;
 
 public class Servidor {
     
     private static final int PORTA = 1234;
     private AppController controlador;
+    private DesenhadorVoid desenhador; //desenhador que não faz nada para uso na interface textual
     
     public void iniciar() throws IOException {
         ServerSocket socket = new ServerSocket(PORTA);
@@ -100,17 +105,37 @@ public class Servidor {
             case NOVO_PROJETO:
                 //TODO
                 controlador.novoProjeto();
-                outList.add("ok");
+                outList.add(OutputMessage.SUCCESS.toString());
 //                System.out.println("cheguei aqui");
                 break;
             case GET_ESTADO_PROJETO:
                 List<String> resultado = controlador.desenhaTudo();
+                if (resultado.isEmpty()) {
+                    outList.add(OutputMessage.EMPTY.toString());
+                }
                 for (String figuraStr: resultado) {
                     outList.add(figuraStr);
                 }
                 break;
-            case NOVA_FIGURA:
-                //TODO
+            case NOVO_RETANGULO:
+                if (command.split(" ").length != 5) {
+                    outList.add(OutputMessage.NOT_ALLOWED.toString());
+                    break;
+                    //O QUE FAZER FICA A CRITERIO DE VOCES
+                }
+                String x = command.split(" ")[1];
+                String y = command.split(" ")[2];
+                String largura = command.split(" ")[3];
+                String altura = command.split(" ")[4];
+               
+                controlador.criaRetangulo(Integer.parseInt(x),
+                                        Integer.parseInt(y),
+                                        Integer.parseInt(largura),
+                                        Integer.parseInt(altura),
+                                        desenhador);
+           
+                outList.add(OutputMessage.SUCCESS.toString());
+                
                 break;
             //COLOCAR TODOS OS COMANDOS
             default:

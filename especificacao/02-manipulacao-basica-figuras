@@ -20,7 +20,7 @@ ok
 > get-estado-projeto
 vazio
 
-> nova-figura retangulo 20 20 100 100
+> novo-retangulo 20 20 100 100
 ok
 
 > get-estado-projeto

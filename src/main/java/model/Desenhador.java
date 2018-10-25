@@ -3,12 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package desktop;
+package model;
 
 /**
  *
  * @author helio
  */
-public enum Opcao {
-    SELECAO, RETANGULO, ELIPSE, LINHA_RETA;
+public interface Desenhador {
+    
+    void desenha(Figura f);
+    
 }

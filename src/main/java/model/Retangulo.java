@@ -11,11 +11,25 @@ import java.awt.Color;
  *
  * @author helio
  */
-public class Retangulo implements Figura, AreaCalculavel {
+public class Retangulo extends Figura implements AreaCalculavel {
+    
+    private int largura;
+    private int altura;
+    
+    public Retangulo(int x, int y, int largura, int altura, Desenhador desenhador) {
+        super(x, y, desenhador);
+        this.largura = largura;
+        this.altura = altura;
+    }
 
     @Override
     public String desenhar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        desenhador.desenha(this);
+        
+        return "Retangulo("+this.getPosicao()
+                +", largura="+this.largura
+                +", altura="+this.altura + ")";
     }
 
     @Override
@@ -53,6 +67,16 @@ public class Retangulo implements Figura, AreaCalculavel {
         return this.calculaArea().intValue() 
                 - outro.calculaArea().intValue();
     }
+
+    public int getLargura() {
+        return largura;
+    }
+
+    public int getAltura() {
+        return altura;
+    }
+    
+    
 
  
 }

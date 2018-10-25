@@ -11,8 +11,14 @@ import java.awt.Color;
  *
  * @author helio
  */
-public class LinhaReta implements Figura {
+public class LinhaReta extends Figura  {
 
+    public LinhaReta(Desenhador desenhador) {
+        super(0, 0, desenhador);
+    }
+
+    
+    
     @Override
     public String desenhar() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

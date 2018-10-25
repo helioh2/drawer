@@ -5,18 +5,18 @@
  */
 package server;
 
-import java.util.LinkedList;
-import java.util.List;
+import model.Desenhador;
 import model.Figura;
 
 /**
  *
  * @author helio
  */
-class Projeto {
-    
-    
-    
-    
+class DesenhadorVoid implements Desenhador {
+
+    @Override
+    public void desenha(Figura f) {
+        System.out.println("Simula desenho");
+    }
     
 }

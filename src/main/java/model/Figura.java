@@ -11,13 +11,53 @@ import java.awt.Color;
  *
  * @author helio
  */
-public interface Figura  {
-    String desenhar();
-    void mover(int dx, int dy);
-    void redimensionar(int dx, int dy);
-    void setCor(Color cor);
-    void setPreenchido();
-    void setContorno();
+public abstract class Figura  {
+    
+    private int id;
+    private Point posicao;
+    private Color cor; 
+    private boolean preenchido;
+    protected Desenhador desenhador;
+
+    public Figura(int x, int y, Desenhador desenhador) {
+        this.posicao = new Point(x, y);
+        this.desenhador = desenhador;
+    }
+
+    
+    
+    public Point getPosicao() {
+        return posicao;
+    }
+
+    public void setPosicao(Point posicao) {
+        this.posicao = posicao;
+    }
+
+    public Color getCor() {
+        return cor;
+    }
+
+    public void setCor(Color cor){
+        this.cor = cor;
+    }
+
+    public boolean isPreenchido() {
+        return preenchido;
+    }
+  
+    public void setPreenchido(){
+        this.preenchido = true;
+    }
+    
+    public void setContorno() {
+        this.preenchido = false;
+    }
+    
+    public abstract String desenhar();
+    public abstract void mover(int dx, int dy);
+    public abstract void redimensionar(int dx, int dy);
+    
     
     
 }

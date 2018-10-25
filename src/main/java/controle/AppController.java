@@ -1,10 +1,12 @@
 
-package server;
+package controle;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import model.Desenhador;
 import model.Figura;
+import model.Retangulo;
 
 
 /**
@@ -28,5 +30,17 @@ public class AppController {
         }
         return lista;
     }
+
+    public void addFigura(Figura figura) {
+        figuras.add(figura);
+    }
+    
+    public void criaRetangulo(int x, int y, int largura, int altura, Desenhador desenhador) {
+         Figura figura = new Retangulo(x, y, largura, altura, desenhador);
+         this.addFigura(figura);
+         
+         System.out.println(desenhaTudo());
+    }
+    
    
 }

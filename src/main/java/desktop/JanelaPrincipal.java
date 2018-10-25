@@ -5,8 +5,10 @@
  */
 package desktop;
 
-import server.AppController;
+import controle.AppController;
 import java.awt.Graphics2D;
+import javax.swing.JOptionPane;
+import model.Desenhador;
 
 /**
  *
@@ -14,13 +16,19 @@ import java.awt.Graphics2D;
  */
 public class JanelaPrincipal extends javax.swing.JFrame {
 
-    Opcao opcaoAtual= Opcao.SELECAO;
+    Opcao opcaoAtual = Opcao.SELECAO; 
     AppController controlador;
+    int xInicial;
+    int yInicial;
+    Desenhador desenhadorRetangulo;
     /**
      * Creates new form NewJFrame
      */
     public JanelaPrincipal() {
         initComponents();
+        this.controlador = new AppController();
+        this.controlador.novoProjeto();
+        desenhadorRetangulo = new DesenhadorRetanguloAWT(telaDesenho);
 //        telaDesenhoController = new TelaDesenhoController(telaDesenho);
     }
 
@@ -36,6 +44,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         telaDesenho = new javax.swing.JPanel();
         botaoRetangulo = new javax.swing.JButton();
         botaoElipse = new javax.swing.JButton();
+        botaoLinhaReta = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -62,6 +71,11 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         );
 
         botaoRetangulo.setText("Retangulo");
+        botaoRetangulo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botaoRetanguloMouseClicked(evt);
+            }
+        });
         botaoRetangulo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoRetanguloActionPerformed(evt);
@@ -69,6 +83,8 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         });
 
         botaoElipse.setText("Elipse");
+
+        botaoLinhaReta.setText("Linha Reta");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -83,7 +99,9 @@ public class JanelaPrincipal extends javax.swing.JFrame {
                         .addGap(38, 38, 38)
                         .addComponent(botaoRetangulo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(botaoElipse)))
+                        .addComponent(botaoElipse)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(botaoLinhaReta)))
                 .addContainerGap(26, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -94,7 +112,8 @@ public class JanelaPrincipal extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botaoRetangulo)
-                    .addComponent(botaoElipse))
+                    .addComponent(botaoElipse)
+                    .addComponent(botaoLinhaReta))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
@@ -102,18 +121,37 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botaoRetanguloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoRetanguloActionPerformed
-        // TODO add your handling code here:
+        System.out.println("Ola mundo");
+//        JOptionPane.showMessageDialog(rootPane, "Ola mundo");
         opcaoAtual = Opcao.RETANGULO;
     }//GEN-LAST:event_botaoRetanguloActionPerformed
 
     private void telaDesenhoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_telaDesenhoMousePressed
-
+        xInicial = evt.getX();
+        yInicial = evt.getY();
     
     }//GEN-LAST:event_telaDesenhoMousePressed
 
     private void telaDesenhoMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_telaDesenhoMouseReleased
+        int xFinal = evt.getX();
+        int yFinal = evt.getY();
+        switch (opcaoAtual){
+            case RETANGULO:
+                controlador.criaRetangulo(xInicial, yInicial, 
+                        xFinal - xInicial, yFinal - yInicial,
+                        desenhadorRetangulo);
+                break;
+            case SELECAO:
+                break;
+            case ELIPSE:
+                break;
+        }
         
     }//GEN-LAST:event_telaDesenhoMouseReleased
+
+    private void botaoRetanguloMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botaoRetanguloMouseClicked
+        
+    }//GEN-LAST:event_botaoRetanguloMouseClicked
 
     /**
      * @param args the command line arguments
@@ -153,6 +191,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botaoElipse;
+    private javax.swing.JButton botaoLinhaReta;
     private javax.swing.JButton botaoRetangulo;
     private javax.swing.JPanel telaDesenho;
     // End of variables declaration//GEN-END:variables

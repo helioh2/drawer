@@ -13,7 +13,8 @@ public enum OutputMessage {
     SUCCESS("ok"),
     INVALID_COMMAND("comando-invalido"), 
     NOT_ALLOWED("nao-permitido"),
-    NOTHING("nada");
+    NOTHING("nada"),
+    EMPTY("vazio");
     
     
     private String label;

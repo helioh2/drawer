@@ -11,9 +11,14 @@ import java.awt.Color;
  *
  * @author helio
  */
-public class Elipse implements Figura, AreaCalculavel {
+public class Elipse extends Figura implements  AreaCalculavel {
 
     private int id;
+
+    public Elipse(Desenhador desenhador) {
+        super(0, 0, desenhador);
+    }
+    
     
     
     @Override

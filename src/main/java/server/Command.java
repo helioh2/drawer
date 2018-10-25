@@ -13,7 +13,8 @@ public enum Command {
     NOVO_PROJETO("novo-projeto"),
     NOVA_FIGURA("nova-figura"),
     MOVER_FIGURA("move-figura"),
-    GET_ESTADO_PROJETO("get-estado-projeto");
+    GET_ESTADO_PROJETO("get-estado-projeto"),
+    NOVO_RETANGULO("novo-retangulo");
     
     
     private String label;
