@@ -71,11 +71,6 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         );
 
         botaoRetangulo.setText("Retangulo");
-        botaoRetangulo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                botaoRetanguloMouseClicked(evt);
-            }
-        });
         botaoRetangulo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoRetanguloActionPerformed(evt);
@@ -148,10 +143,6 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_telaDesenhoMouseReleased
-
-    private void botaoRetanguloMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botaoRetanguloMouseClicked
-        
-    }//GEN-LAST:event_botaoRetanguloMouseClicked
 
     /**
      * @param args the command line arguments

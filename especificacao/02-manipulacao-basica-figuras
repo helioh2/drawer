@@ -3,9 +3,9 @@ Criação, remoção, movimentação, redimensionamento de figuras básicas.
 Assinaturas dos comandos: 
 novo-projeto
 get-estado-projeto
-nova-figura retangulo <x> <y> <largura> <altura>
-nova-figura elipse <x> <y> <largura> <altura>
-nova-figura linha-reta <x_inic> <y_inic> <x_final> <y_final>
+novo-retangulo <x> <y> <largura> <altura>
+nova-elipse <x> <y> <largura> <altura>
+nova-linha-reta <x_inic> <y_inic> <x_final> <y_final>
 move-figura <id_figura> <dx> <dy>
 redimensiona-figura <id_figura> <d_larg> <d_alt>  ##d_larg é a variação de largura, e d_alt é a variação na altura
 muda-cor-figura <id_figura> <r> <g> <b>   (r, g, e b são os tons de vermelho, verde e azul, de 0 a 255 cada)
@@ -26,14 +26,14 @@ ok
 > get-estado-projeto
 retangulo(id=1, x=20, y=20, largura=100, altura=100, cor=(0,0,0), preenchido=false)
 
-> nova-figura elipse 40 40 50 50
+> nova-elipse 40 40 50 50
 ok
 
 > get-estado-projeto
 elipse(id=2, x=40, y=40, largura=50, altura=50, cor=(0,0,0), preenchido=false)
 retangulo(id=1, x=20, y=20, largura=100, altura=100, cor=(0,0,0), preenchido=false)
 
-> nova-figura linha-reta 30 30 60 60
+> nova-linha-reta 30 30 60 60
 ok
 
 > get-estado-projeto
@@ -83,7 +83,7 @@ ok
 linha-reta(id=3, x_inic=80, y_inic=130, x_final=160, y_final=260, cor=(0,0,0), preenchido=false)
 retangulo(id=1, x=70, y=120, largura=150, altura=200, cor=(0,0,0), preenchido=false)
 
-> nova-figura linha-reta 100 100 20 20
+> nova-linha-reta 100 100 20 20
 ok
 
 > get-estado-projeto

@@ -3,9 +3,9 @@ Seleção de figuras básico
 Assinaturas dos comandos: 
 novo-projeto
 get-estado-projeto
-nova-figura retangulo <x> <y> <largura> <altura>
-nova-figura elipse <x> <y> <largura> <altura>
-nova-figura linha-reta <x_inic> <y_inic> <x_final> <y_final>
+novo-retangulo <x> <y> <largura> <altura>
+nova-elipse <x> <y> <largura> <altura>
+nova-linha-reta <x_inic> <y_inic> <x_final> <y_final>
 agrupar-figuras <id_fig1> <id_fig2> <id_fig3> ...
 desagrupar-figura <id_figura>
 
@@ -18,20 +18,20 @@ ok
 > get-estado-projeto
 vazio
 
-> nova-figura retangulo 20 20 100 100
+> novo-retangulo 20 20 100 100
 ok
 
 > get-estado-projeto
 retangulo(id=1, x=20, y=20, largura=100, altura=100, cor=(0,0,0), preenchido=false)
 
-> nova-figura elipse 40 40 50 50
+> nova-elipse 40 40 50 50
 ok
 
 > get-estado-projeto
 elipse(id=2, x=40, y=40, largura=50, altura=50, cor=(0,0,0), preenchido=false)
 retangulo(id=1, x=20, y=20, largura=100, altura=100, cor=(0,0,0), preenchido=false)
 
-> nova-figura linha-reta 100 120 120 100
+> nova-linha-reta 100 120 120 100
 ok
 
 > get-estado-projeto
