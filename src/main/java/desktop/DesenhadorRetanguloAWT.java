@@ -22,14 +22,10 @@ public class DesenhadorRetanguloAWT implements Desenhador {
     private JPanel tela;  //usando composição em vez de herança
     private BufferedImage imagemAtual;
 
-    
-    //TODO (ainda não terminado)
-    public DesenhadorRetanguloAWT(JPanel tela) {
+    public DesenhadorRetanguloAWT(JPanel tela, BufferedImage imagemAtual) {
         this.tela = tela;
-        imagemAtual = new BufferedImage(600, 
-600, BufferedImage.TYPE_INT_RGB);
+        this.imagemAtual = imagemAtual;
     }
-    
     
     @Override
     public void desenha(Figura f) {
@@ -38,6 +34,7 @@ public class DesenhadorRetanguloAWT implements Desenhador {
         Retangulo ret = (Retangulo) f;
         g.drawRect(ret.getPosicao().getX(), ret.getPosicao().getY(), 
                 ret.getLargura(), ret.getAltura());
+        g.drawImage(imagemAtual, 0, 0, null); // Redesenha o que já foi desenhado
         tela.repaint();
     
     }

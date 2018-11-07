@@ -6,7 +6,11 @@
 package desktop;
 
 import controle.AppController;
+import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.SystemColor;
+import java.awt.image.BufferedImage;
 import javax.swing.JOptionPane;
 import model.Desenhador;
 
@@ -21,6 +25,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     int xInicial;
     int yInicial;
     Desenhador desenhadorRetangulo;
+    BufferedImage imagemAtual;
     /**
      * Creates new form NewJFrame
      */
@@ -28,10 +33,25 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         initComponents();
         this.controlador = new AppController();
         this.controlador.novoProjeto();
-        desenhadorRetangulo = new DesenhadorRetanguloAWT(telaDesenho);
-//        telaDesenhoController = new TelaDesenhoController(telaDesenho);
+        
+        telaDesenho.setBackground(SystemColor.text);
+        this.imagemAtual = new BufferedImage(telaDesenho.getWidth(), 
+telaDesenho.getHeight(), BufferedImage.TYPE_INT_RGB);
+        desenhadorRetangulo = new DesenhadorRetanguloAWT(telaDesenho, imagemAtual);
+        
+        //INSTANCIAR OS OUTROS DESENHADORES...
+        
+        limpaTela();
     }
 
+    public final void limpaTela(){
+        imagemAtual.flush();
+        Graphics2D g = imagemAtual.createGraphics();        
+        g.setColor(Color.WHITE);
+        g.fillRect(0, 0, telaDesenho.getWidth(), telaDesenho.getHeight());
+        telaDesenho.paintImmediately(0, 0, telaDesenho.getWidth(), telaDesenho.getHeight());
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -41,7 +61,13 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        telaDesenho = new javax.swing.JPanel();
+        telaDesenho = new javax.swing.JPanel() {
+            @Override
+            public void paint(Graphics g) {
+                g.drawImage(imagemAtual, 0, 0, null); // Redesenha o que já foi desenhado
+            } //exemplo de como sobrescrever métodos sem usar a herança
+            //usando definição de classe anônima
+        };
         botaoRetangulo = new javax.swing.JButton();
         botaoElipse = new javax.swing.JButton();
         botaoLinhaReta = new javax.swing.JButton();

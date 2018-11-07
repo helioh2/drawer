@@ -74,6 +74,9 @@
         <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="telaDesenhoMousePressed"/>
         <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="telaDesenhoMouseReleased"/>
       </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JPanel() {&#xa;    @Override&#xa;    public void paint(Graphics g) {&#xa;        g.drawImage(imagemAtual, 0, 0, null); // Redesenha o que j&#xe1; foi desenhado&#xa;    } //exemplo de como sobrescrever m&#xe9;todos sem usar a heran&#xe7;a&#xa;    //usando defini&#xe7;&#xe3;o de classe an&#xf4;nima&#xa;}"/>
+      </AuxValues>
 
       <Layout>
         <DimensionLayout dim="0">
